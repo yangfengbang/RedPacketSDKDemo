@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="在展示左上角头像之前，请先设置展示的X,Y坐标，以及预留的展示区域的宽"
+        android:textColor="@color/zplay_withrawals_help_text2" />
+
+    <LinearLayout
+        android:id="@+id/edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/pointX"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="pointX"
+            android:text="200"/>
+
+        <EditText
+            android:id="@+id/pointY"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="pointY"
+            android:text="200"/>
+
+        <EditText
+            android:id="@+id/width"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="width"
+            android:text="300"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/edit"
+        android:text="招财猫红包相关：" />
+    <Button
+        android:id="@+id/showUserView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title1"
+        android:text="展示左上角的头像" />
+
+    <Button
+        android:id="@+id/destroyUserView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showUserView"
+        android:text="销毁左上角的头像" />
+
+    <Button
+        android:id="@+id/showRedPacket"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/destroyUserView"
+        android:text="展示招财猫红包页面" />
+
+    <Button
+        android:id="@+id/showRedPacketFinal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showRedPacket"
+        android:text="视频播放结束，展示招财猫红包结算页面" />
+
+    <Button
+        android:id="@+id/initIsSuccess"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showRedPacketFinal"
+        android:text="判断红包SDK是否初始化成功" />
+
+
+    <Button
+        android:id="@+id/isReady"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/initIsSuccess"
+        android:text="判断是否可以展示红包" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/isReady"
+        android:text="现金红包相关：" />
+
+    <Button
+        android:id="@+id/showCashRedPacket"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title2"
+        android:text="展示现金红包页面" />
+
+    <Button
+        android:id="@+id/showCashRedPacketFinal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showCashRedPacket"
+        android:text="视频播放结束，展示现金红包结算页面" />
+
+    <Button
+        android:id="@+id/isCashReady"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showCashRedPacketFinal"
+        android:text="判断是否可以展示现金红包" />
+
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/isCashReady"
+        android:text="好友助力红包相关：" />
+
+    <Button
+        android:id="@+id/showFriendsGroupRedPacket"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title3"
+        android:text="展示好友助力红包页面" />
+
+
+
+</RelativeLayout>
+
+
+
+
