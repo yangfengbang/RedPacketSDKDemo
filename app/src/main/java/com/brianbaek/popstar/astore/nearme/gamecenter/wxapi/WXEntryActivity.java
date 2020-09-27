@@ -1,4 +1,4 @@
-package com.zytx.xmxx.wxapi;
+package com.brianbaek.popstar.astore.nearme.gamecenter.wxapi;
 
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;

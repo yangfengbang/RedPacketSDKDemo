@@ -21,11 +21,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.brianbaek.popstar.astore.nearme.gamecenter.R;
 import com.zplay.android.sdk.redpacket.ZplayRedPacketSDK;
 import com.zplay.android.sdk.redpacket.listener.ZplayCashRedPacketListener;
 import com.zplay.android.sdk.redpacket.listener.ZplayFriendsGroupListener;
 import com.zplay.android.sdk.redpacket.listener.ZplayRedpacketListener;
-import com.zytx.xmxx.R;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ import java.util.List;
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
     private Button showUserView, destroyUserView, showRedPacket, showRedPacketFinal, initIsSuccess, isReady, showCashRedPacket, showCashRedPacketFinal,
-            isCashReady, showFriendsGroupRedPacket;
+            isCashReady, showFriendsGroupRedPacket, showCatRedPacketCenter, getCatNumber;
     private EditText pointX, pointY, width;
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -67,6 +67,8 @@ public class MainActivity extends Activity {
         isCashReady = findViewById(R.id.isCashReady);
 
         showFriendsGroupRedPacket = findViewById(R.id.showFriendsGroupRedPacket);
+        showCatRedPacketCenter = findViewById(R.id.showCatRedPacketCenter);
+        getCatNumber = findViewById(R.id.getCatNumber);
 
 
         ZplayRedPacketSDK.init(this);
@@ -114,8 +116,8 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onRedPacketFinalIsDismissed() {
-                Toast.makeText(MainActivity.this, "红包结算页面关闭", Toast.LENGTH_SHORT).show();
+            public void onRedPacketFinalIsDismissed(String catNumber) {
+                Toast.makeText(MainActivity.this, "红包结算页面关闭,当前获得招财猫数量：" + catNumber, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -210,6 +212,21 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 ZplayRedPacketSDK.showCatRedPacketFinal(MainActivity.this);
+            }
+        });
+
+        showCatRedPacketCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ZplayRedPacketSDK.showCatRedPacketCenter(MainActivity.this);
+            }
+        });
+
+        getCatNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "当前获得招财猫卡片数:" + ZplayRedPacketSDK.getCatNumber(MainActivity.this), Toast.LENGTH_SHORT).show();
+
             }
         });
 

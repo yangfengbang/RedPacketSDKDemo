@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.zytx.xmxx">
+    package="com.brianbaek.popstar.astore.nearme.gamecenter">
 
 
     <application
@@ -44,7 +44,7 @@
 
 
         <activity
-            android:name="com.zytx.xmxx.wxapi.WXEntryActivity"
+            android:name="com.brianbaek.popstar.astore.nearme.gamecenter.wxapi.WXEntryActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:launchMode="singleTop"
