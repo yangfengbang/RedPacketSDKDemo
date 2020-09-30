@@ -2,6 +2,7 @@ package com.zplay.redpacket.demo;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -26,6 +27,7 @@ import com.zplay.android.sdk.redpacket.ZplayRedPacketSDK;
 import com.zplay.android.sdk.redpacket.listener.ZplayCashRedPacketListener;
 import com.zplay.android.sdk.redpacket.listener.ZplayFriendsGroupListener;
 import com.zplay.android.sdk.redpacket.listener.ZplayRedpacketListener;
+import com.zplay.android.sdk.redpacket.listener.ZplayRedpacketLoginCallback;
 
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class MainActivity extends Activity {
     private Button showUserView, destroyUserView, showRedPacket, showRedPacketFinal, initIsSuccess, isReady, showCashRedPacket, showCashRedPacketFinal,
             isCashReady, showFriendsGroupRedPacket, showCatRedPacketCenter, getCatNumber;
     private EditText pointX, pointY, width;
+    public static boolean isOpen = false;
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -51,6 +54,8 @@ public class MainActivity extends Activity {
         }
 
         setContentView(R.layout.activity_main);
+
+        isOpen = true;
 
         showUserView = findViewById(R.id.showUserView);
         destroyUserView = findViewById(R.id.destroyUserView);
@@ -70,6 +75,7 @@ public class MainActivity extends Activity {
         showCatRedPacketCenter = findViewById(R.id.showCatRedPacketCenter);
         getCatNumber = findViewById(R.id.getCatNumber);
 
+        //oppo SDK初始化
 
         ZplayRedPacketSDK.init(this);
 
@@ -168,6 +174,26 @@ public class MainActivity extends Activity {
 
                 //视频广告播放结束，请调用下面的接口通知红包SDK给奖励
                 ZplayRedPacketSDK.reportFriendsGroupVideoFinal(MainActivity.this);
+            }
+        });
+
+        ZplayRedPacketSDK.setRedpacketLoginListener(new ZplayRedpacketLoginCallback() {
+            @Override
+            public void onSuccess(String loginType, String uid, String token, String userName, String headimgurl) {
+                //登录成功
+                Toast.makeText(MainActivity.this, "登录成功，loginType: " + loginType + "，userName" + userName, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(String errorCode, String errorMsg) {
+                //登录失败
+                Toast.makeText(MainActivity.this, "登录失败: " + errorMsg, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel() {
+                //登录失败
+                Toast.makeText(MainActivity.this, "取消登录: ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -293,6 +319,13 @@ public class MainActivity extends Activity {
         Log.e(TAG, "onNewIntent:" + getIntent());
         ZplayRedPacketSDK.openFriendsGroupHelp(MainActivity.this, getIntent());
     }
+
+    public static synchronized void launch(Context ctx) {
+        Intent i;
+        i = new Intent(ctx, MainActivity.class);
+        ctx.startActivity(i);
+    }
+
 
     @Override
     protected void onResume() {
